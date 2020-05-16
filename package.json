@@ -1,0 +1,11 @@
+{
+  "name": "rust-wasm-worker-template-master",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/VictorGavrish/rust-wasm-worker-template.svg?branch=master)](https://travis-ci.org/VictorGavrish/rust-wasm-worker-template)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>
+      My awesome Rust, WebAssembly, Webpack and Web Worker application
+    </title>
+    <style>
+    .slidecontainer {
+      width: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 25px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    
+    .slider:hover {
+      opacity: 1;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+    </style>
+  </head>
+
+  <body>
+    <p>
+      Please enter a positive number under 65535 and we'll tell you if it is
+      prime!
+    </p>
+    <input type="text" id="primeTextbox" />
+    <button type="button" id="submitButton">TEST!</button>
+    <p id="answer1"></p>
+    <p id="answer2"></p>
+
+
+
+
+
+
+    <button id="aaa">Start Race</button>
+    <div class="slidecontainer">
+      <input type="range" min="1" max="10000000" value="50" class="slider" id="myRange">
+      <p>Value: <span id="demo"></span></p>
+    </div>
+    <p id="aa">RUST</p>
+    <span id="chronotime1">0:00:00:00</span>
+    <p id="bb">JS</p>
+    <span id="chronotime2">0:00:00:00</span>
+
+
+
+    <script language="JavaScript">
+      var startTime = 0
+      var start = 0
+      var end = 0
+      var diff = 0
+      var timerID = 0
+      function chrono(){
+        end = new Date()
+        diff = end - start
+        diff = new Date(diff)
+        var msec = diff.getMilliseconds()
+        var sec = diff.getSeconds()
+        var min = diff.getMinutes()
+        var hr = diff.getHours()-1
+        if (min < 10){
+          min = "0" + min
+        }
+        if (sec < 10){
+          sec = "0" + sec
+        }
+        if(msec < 10){
+          msec = "00" +msec
+        }
+        else if(msec < 100){
+          msec = "0" +msec
+        }
+        document.getElementById("chronotime1").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
+        timerID = setTimeout("chrono()", 10)
+      }
+      function chronoStart1(){
+        start = new Date()
+        chrono()
+      }
+      function chronoContinue1(){
+        start = new Date()-diff
+        start = new Date(start)
+        chrono()
+      }
+      function chronoReset1(){
+        document.getElementById("chronotime1").innerHTML = "0:00:00:000"
+        start = new Date()
+      }
+      function chronoStop1Reset(){
+        document.getElementById("chronotime1").innerHTML = "0:00:00:000"
+      }
+      function chronoStop1(){
+        clearTimeout(timerID)
+      }
+
+
+
+
+
+
+
+
+
+      var startTime2 = 0
+      var start2 = 0
+      var end2 = 0
+      var diff2 = 0
+      var timerID2 = 0
+      function chrono2(){
+        end2 = new Date()
+        diff2 = end2 - start2
+        diff2 = new Date(diff2)
+        var msec = diff2.getMilliseconds()
+        var sec = diff2.getSeconds()
+        var min = diff2.getMinutes()
+        var hr = diff2.getHours()-1
+        if (min < 10){
+          min = "0" + min
+        }
+        if (sec < 10){
+          sec = "0" + sec
+        }
+        if(msec < 10){
+          msec = "00" +msec
+        }
+        else if(msec < 100){
+          msec = "0" +msec
+        }
+        document.getElementById("chronotime2").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
+        timerID2 = setTimeout("chrono2()", 10)
+      }
+      function chronoStart2(){
+        start2 = new Date()
+        chrono2()
+      }
+      function chronoContinue2(){
+        start2 = new Date()-diff2
+        start2 = new Date(start2)
+        chrono2()
+      }
+      function chronoReset2(){
+        document.getElementById("chronotime2").innerHTML = "0:00:00:000"
+        start2 = new Date()
+      }
+      function chronoStop2Reset(){
+        document.getElementById("chronotime2").innerHTML = "0:00:00:000"
+      }
+      function chronoStop2(){
+        clearTimeout(timerID2)
+      }
+      </script>
+  </body>
+</html>
